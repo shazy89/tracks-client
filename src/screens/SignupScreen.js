@@ -8,6 +8,7 @@ const SignupScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
       
+
     return <View style={styles.container}>
      <Spacer>
         <Text h2 > Sign Up for 
@@ -22,6 +23,7 @@ const SignupScreen = ({ navigation }) => {
         <Input label="Password" 
                value={password} onChangeText={setPassword}  
                autoCapitalize="none" autoCorrect={false} secureTextEntry/>
+               {state.errorMessage ? <Text style={styles.errMessage}> {state.errorMessage}</Text> : null}
       <Spacer>
         <Button title="Sign Up" onPress={() => signup({ email, password })} />
       </Spacer>
@@ -35,12 +37,19 @@ SignupScreen.navigationOptions = () => {
 
 const styles = StyleSheet.create({
     container: {
+      flex: 1,
+      justifyContent: 'center',
+      marginBottom: 250
+  },
+  errMessage: {
+    color: 'red',
+    fontSize: 16,
+    marginLeft: 15
+    
 
-
-        flex: 1,
-        justifyContent: 'center',
-        marginBottom: 250
-    }
+  }
 });
+
+
 
 export default SignupScreen  
