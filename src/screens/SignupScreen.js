@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NavigationEvents } from 'react-navigation'
 import { Context as AuthContext } from '../context/AuthContext';
@@ -6,12 +6,17 @@ import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink'
 
 const SignupScreen = () => {
-  const { state, signup, clearErrorMessage } = useContext(AuthContext);
+  const { state, signup, clearErrorMessage, tryLocalSignin } = useContext(AuthContext);
+    // when we navigate from 1 page and back we are not clearing the data , to handle errors rendered errors we are using
+    //  NavigationEvents with onWillFocus , this way when we switch screens will remove the errors
+    useEffect(() => {
+      tryLocalSignin();
+    }, []);
 
   return (
     <View style={styles.container}>
        <NavigationEvents  
-          onWillFocus={clearErrorMessage}  />
+          onWillFocus={clearErrorMessage}  /> 
       <AuthForm
         headerText="Sign Up for Tracker"
         errorMessage={state.errorMessage}
