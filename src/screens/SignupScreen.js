@@ -15,10 +15,10 @@ const SignupScreen = () => {
         submitButtonText="Sign Up"
         onSubmit={signup}
       />
-       <NavLink routeName="Signin"
-                text="Alredy have an account? Sign in instead!"
-       />
-
+       <NavLink 
+        routeName="Signin"
+        text="Alredy have an account? Sign in instead!"
+      />
     </View>
   );
 };
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 250,
   },
-
 });
 
 export default SignupScreen;
+
+
