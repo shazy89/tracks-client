@@ -36,14 +36,20 @@ export default (shouldTrack, callback) => {
       subscriber.remove();
       setSubscriber(null);
     }
-  }, [shouldTrack]);
+
+    return () => {
+      if (subscriber) {
+        subscriber.remove();
+      }
+    };
+  }, [shouldTrack, callback]);
 
   return [err];
   
 
 
-      // react will check if shouldTrack is changed and decide to make the callback or no
-// will check condition if shouldTrack is true or falce?
+  // react will check if shouldTrack is changed and decide to make the callback or no
+  // will check condition if shouldTrack is true or falce?
  // shouldTrack is the argument we are passing in from TrackCreateScreen ( isFocused ) and
  // isFocused is props from withNavigationFocus react-navigation
  // import { SafeAreaView, withNavigationFocus } from 'react-navigation';
