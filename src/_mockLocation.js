@@ -1,28 +1,27 @@
 import * as Location from 'expo-location';
-// this is hw we test our app
-const tenMettersWithDegrees = 0.0001;
+
+const tenMetersWithDegrees = 0.0001;
 
 const getLocation = increment => {
-   return {
-      timestamp: 100000,
-      cords: {
-          speed: 0,
-          heading: 0,
-          accuracy: 5,
-          altitudeAccuracy: 5,
-          altitude: 5,
-          longitude: -122.0312186 + increment * tenMettersWithDegrees,
-          longitude: 37.33233141 + increment * tenMettersWithDegrees
-      }
-   };
+  return {
+    timestamp: 10000000,
+    coords: {
+      speed: 0,
+      heading: 0,
+      accuracy: 5,
+      altitudeAccuracy: 5,
+      altitude: 5,
+      longitude: -74.114400 + increment * tenMetersWithDegrees,
+      latitude: 40.810890 + increment * tenMetersWithDegrees
+    }
+  };
 };
 
-let counter = 0
-
+let counter = 0;
 setInterval(() => {
-    Location.EventEmitter.emit('Expo.locationChanged', {
-        watchId: Location._getCurrentWatchId(),
-        location: getLocation(counter)
-    });
-    counter ++;
-},1000);
+  Location.EventEmitter.emit('Expo.locationChanged', {
+    watchId: Location._getCurrentWatchId(),
+    location: getLocation(counter)
+  });
+  counter++;
+}, 1000);
