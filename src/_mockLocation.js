@@ -1,5 +1,5 @@
 import * as Location from 'expo-location';
-
+// this is hw we test our app
 const tenMettersWithDegrees = 0.0001;
 
 const getLocation = increment => {
@@ -25,4 +25,4 @@ setInterval(() => {
         location: getLocation(counter)
     });
     counter ++;
-},1000)
+},1000);
