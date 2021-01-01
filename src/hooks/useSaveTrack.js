@@ -1,14 +1,16 @@
-import React, {useContext} from 'react'
-import {Context as LocationContext } from '../context/LocationContext'
-import {Context as TrackContext } from '../context/TrackContext'
-import { View, StyleSheet, Text} from 'react-native';
+import { useContext } from 'react';
+import { Context as TrackContext } from '../context/TrackContext';
+import { Context as LocationContext } from '../context/LocationContext';
 
-const useSaveTrack = () => {
-    const { createTrack } = useContext(TrackContext);
-    const { state: { locations, name }  } = useContext(LocationContext);
+export default () => {
+  const { createTrack } = useContext(TrackContext);
+  const {
+    state: { locations, name }
+  } = useContext(LocationContext);
+
+  const saveTrack = () => {
+    createTrack(name, locations);
+  };
+
+  return [saveTrack];
 };
-const styles = StyleSheet.create({
-
-});
-
-export default useSaveTrack;
