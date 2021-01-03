@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
-import { ListItem } from 'react-native-elements'
+import { ListItem, Text } from 'react-native-elements'
 import { Context as TrackContext } from '../context/TrackContext';
 
 const TrackListScreen = ({ navigation }) => {
@@ -14,10 +14,10 @@ const TrackListScreen = ({ navigation }) => {
       <FlatList
         data={state}
         keyExtractor={item => item._id}
-        renderItem={({ item }) => {
+        renderItem={({ item }) => { 
           return (
-            <TouchableOpacity>
-               <ListItem  chevron title='HEYYY' bottomDivider/>
+            <TouchableOpacity onPress={() => navigation.navigate('TrackDetail', { _id: item._id }) }>
+               <ListItem chevron><Text>{item.name}</Text></ListItem>
             </TouchableOpacity>
           );
         }}
