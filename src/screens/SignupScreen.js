@@ -11,7 +11,9 @@ const SignupScreen = () => {
     //  NavigationEvents with onWillFocus , this way when we switch screens will remove the errors
 
   return (
+    
     <View style={styles.container}>
+      
        <NavigationEvents  
           onWillFocus={clearErrorMessage}  /> 
       <AuthForm
